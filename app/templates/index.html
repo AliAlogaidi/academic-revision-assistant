@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Academic Revision Assistant</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace" aria-label="Academic revision workspace">
+        <header class="topbar">
+          <div class="brand-block">
+            <img class="brand-logo" src="/static/near-east-university-logo.png" alt="Near East University logo" />
+            <div>
+              <p class="university-name">Near East University</p>
+              <p class="eyebrow">Academic Revision Assistant</p>
+              <h1>Humanized academic revision workspace</h1>
+            </div>
+          </div>
+          <div class="status-group" aria-label="System status">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span class="status" id="providerStatus">Ready</span>
+          </div>
+        </header>
+
+        <form id="rewriteForm" class="controls">
+          <section class="input-band">
+            <label class="field field-wide">
+              <span>Draft Text</span>
+              <textarea id="sourceText" minlength="20" maxlength="12000" required placeholder="Paste an academic paragraph here..."></textarea>
+            </label>
+
+            <div class="control-row">
+              <label class="field">
+                <span>Tone</span>
+                <select id="tone">
+                  <option value="formal">Formal</option>
+                  <option value="semi-formal">Semi-formal</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Depth</span>
+                <select id="depth">
+                  <option value="substantial">Substantial</option>
+                  <option value="balanced">Balanced</option>
+                  <option value="light">Light</option>
+                </select>
+              </label>
+
+              <label class="check">
+                <input id="citationNotes" type="checkbox" checked />
+                <span>Citation reminders</span>
+              </label>
+
+              <div class="button-row">
+                <button id="clearButton" class="button-secondary" type="button">Clear</button>
+                <button id="submitButton" type="submit">Revise Text</button>
+              </div>
+            </div>
+          </section>
+        </form>
+
+        <section class="comparison" aria-label="Before and after comparison">
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Before</h2>
+                <p>Original draft</p>
+              </div>
+              <span class="count" id="beforeCount">0 words</span>
+            </div>
+            <div id="beforeText" class="output muted">Your original text will appear here.</div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>After</h2>
+                <p>Revised draft</p>
+              </div>
+              <span class="count" id="afterCount">0 words</span>
+            </div>
+            <div id="afterText" class="output">The revised version will appear here.</div>
+            <div class="panel-actions">
+              <button id="copyButton" class="button-secondary" type="button">Copy Revised</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="notes" aria-label="Revision notes">
+          <div class="section-head">
+            <h2>Quality Notes</h2>
+            <span id="summaryBadge">Waiting for text</span>
+          </div>
+          <ul id="qualityNotes">
+            <li>Submit a draft to generate revision notes.</li>
+          </ul>
+          <p id="integrityNote" class="integrity"></p>
+        </section>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
