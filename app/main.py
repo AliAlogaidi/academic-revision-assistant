@@ -17,9 +17,12 @@ templates = Jinja2Templates(directory="app/templates")
 rewriter = AcademicRewriter()
 
 
-@app.get("/")
-async def index():
-    return {"status": "ok"}
+@app.get("/", response_class=HTMLResponse)
+async def index(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse(
+        "index.html",
+        {"request": request}
+    )
 
 
 @app.post("/api/rewrite", response_model=RewriteResponse)
